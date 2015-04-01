@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraRotate : MonoBehaviour {
 	public GameObject targetObject;
 	private float targetAngle = 0;
-	const float rotationAmount = 1.5f;
+	public float rotationAmount = 1.5f;
 	public float rDistance = 1.0f;
 	public float rSpeed = 1.0f;
 	public float degree;
