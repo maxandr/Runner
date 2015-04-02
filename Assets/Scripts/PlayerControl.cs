@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
 
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
+	public float Speed = 5f;				// The fastest the player can travel in the x axis.
 	public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	public AudioClip[] taunts;				// Array of clips for when the player taunts.
@@ -22,7 +23,7 @@ public class PlayerControl : MonoBehaviour
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private bool grounded = false;			// Whether or not the player is grounded.
 	private Animator anim;					// Reference to the player's animator component.
-
+	public GameObject camera;
 
 	void Awake()
 	{
@@ -38,56 +39,59 @@ public class PlayerControl : MonoBehaviour
 		grounded = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
 
 		// If the jump button is pressed and the player is grounded then the player should jump.
-		if(Input.GetButtonDown("Jump") && grounded)
-			jump = true;
+		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Joystick1Button0)) {
+			if (grounded) {
+				jump = true;
+			}
+		}
+		if (Input.GetKeyDown (KeyCode.JoystickButton7)) {
+			Application.LoadLevel (Application.loadedLevel);
+		}
 	}
 
 
 	void FixedUpdate ()
 	{
 		// Cache the horizontal input.
-		float h = Input.GetAxis("Horizontal");
-
+		float h = Input.GetAxis ("Horizontal");
+		Vector3 t = Camera.main.transform.position;
+		t.y = transform.position.y;
+		Camera.main.transform.position = t;
+		
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
-		anim.SetFloat("Speed", Mathf.Abs(h));
+		anim.SetFloat ("Speed", Mathf.Abs (h));
 
 		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * GetComponent<Rigidbody>().velocity.x < maxSpeed)
-			// ... add a force to the player.
-			GetComponent<Rigidbody>().AddForce(Vector3.right * h * moveForce);
+		if (h > 0) {
+			transform.position -= transform.right * Speed * Time.deltaTime;
+			Camera.main.transform.position -= transform.right * Speed * Time.deltaTime;
+		}
+		if (h < 0) {
+			transform.position += transform.right * Speed * Time.deltaTime;
+			Camera.main.transform.position += transform.right * Speed * Time.deltaTime;
+		}
+		if (h > 0 && !facingRight)
+			Flip ();
+		else if (h < 0 && facingRight)
+			Flip ();
 
-		// If the player's horizontal velocity is greater than the maxSpeed...
-		if(Mathf.Abs(GetComponent<Rigidbody>().velocity.x) > maxSpeed)
-			// ... set the player's velocity to the maxSpeed in the x axis.
-			GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Sign(GetComponent<Rigidbody>().velocity.x) * maxSpeed, GetComponent<Rigidbody>().velocity.y,GetComponent<Rigidbody>().velocity.z);
+			// If the player should jump...
+		if (jump) {
+				// Set the Jump animator trigger parameter.
+			anim.SetTrigger ("Jump");
 
-		// If the input is moving the player right and the player is facing left...
-		if(h > 0 && !facingRight)
-			// ... flip the player.
-			Flip();
-		// Otherwise if the input is moving the player left and the player is facing right...
-		else if(h < 0 && facingRight)
-			// ... flip the player.
-			Flip();
+				// Play a random jump audio clip.
+			int i = Random.Range (0, jumpClips.Length);
+			AudioSource.PlayClipAtPoint (jumpClips [i], transform.position);
 
-		// If the player should jump...
-		if(jump)
-		{
-			// Set the Jump animator trigger parameter.
-			anim.SetTrigger("Jump");
+				// Add a vertical force to the player.
+			GetComponent<Rigidbody> ().AddForce (new Vector3 (0f, jumpForce, 0f));
 
-			// Play a random jump audio clip.
-			int i = Random.Range(0, jumpClips.Length);
-			AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
-
-			// Add a vertical force to the player.
-			GetComponent<Rigidbody>().AddForce(new Vector3(0f, jumpForce,0f));
-
-			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
+				// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			jump = false;
 		}
 	}
-	
+
 	
 	void Flip ()
 	{

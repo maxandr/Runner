@@ -14,10 +14,10 @@ public class CameraRotate : MonoBehaviour {
 	{
 		
 		// Trigger functions if Rotate is requested
-		if (Input.GetKeyDown(KeyCode.K)) {
+		if (Input.GetKeyDown(KeyCode.K) ||Input.GetKeyDown(KeyCode.JoystickButton4)) {
 			targetAngle -= 90.0f;
 			degree -= 90f;
-		} else if (Input.GetKeyDown(KeyCode.L)) {
+		} else if (Input.GetKeyDown(KeyCode.L)||Input.GetKeyDown(KeyCode.JoystickButton5)) {
 			targetAngle += 90.0f;
 			degree += 90f;
 		}
