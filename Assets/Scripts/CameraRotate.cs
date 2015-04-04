@@ -24,12 +24,12 @@ public class CameraRotate : Pauser {
 	protected override void DoUpdate()
 	{
 		// Trigger functions if Rotate is requested
-		if (Input.GetKeyDown(KeyCode.K) ||Input.GetKeyDown(KeyCode.JoystickButton4)) {
+		if (Input.GetKeyDown(KeyCode.K) ||Input.GetKeyDown(KeyCode.JoystickButton4) && !status) {
 			Pausegame(true);
 			targetAngle -= 90.0f;
 			degree -= 90f;
 			mover.GetComponent<PlanesMover>().Reposition(currentAxis);
-		} else if (Input.GetKeyDown(KeyCode.L)||Input.GetKeyDown(KeyCode.JoystickButton5)) {
+		} else if (Input.GetKeyDown(KeyCode.L)||Input.GetKeyDown(KeyCode.JoystickButton5)&& !status) {
 			Pausegame(true);
 			targetAngle += 90.0f;
 			degree += 90f;
@@ -63,7 +63,6 @@ public class CameraRotate : Pauser {
 		}
 		if (targetAngle == 0) {
 			CheckCoords();
-			mover.GetComponent<PlanesMover>().Move(currentAxis);
 			if(currentAxis == "-z") {
 				Vector3 temp =  transform.position;
 				temp.z = cameraDistance;
@@ -84,6 +83,7 @@ public class CameraRotate : Pauser {
 				temp.x = cameraDistance;
 				transform.position = temp;
 			}
+			mover.GetComponent<PlanesMover>().Move(currentAxis);
 			Pausegame(false);
 		}
 	}

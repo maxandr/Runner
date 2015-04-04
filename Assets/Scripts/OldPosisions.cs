@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class OldPosisions : MonoBehaviour {
-	private Vector3 position;
+	public Vector3 position;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		position = transform.position;
 	}
 	public void RepositionToOldPosition() {

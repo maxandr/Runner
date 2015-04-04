@@ -10,30 +10,31 @@ public class PlayerPosition : MonoBehaviour {
 	public void Set3DPosision(string currentAxis) {
 
 		RaycastHit hit;
-		SphereCollider t = GetComponent<SphereCollider> ();
-		Vector3 a = t.transform.position;
-		a.y -= t.radius;
+		SphereCollider tSphereCollider = GetComponent<SphereCollider> ();
+		Vector3 a = tSphereCollider.transform.position;
+		a.y -= tSphereCollider.radius;
 		if (Physics.Raycast (a, -Vector3.up, out hit)) {
-			Vector3 temp = hit.collider.GetComponent<OldPosisions> ().GetOldPosition ();
-			temp.y = transform.position.y;
-			Vector3 c = Camera.main.transform.position;
+			Debug.Log(hit.collider.gameObject.transform.position);
+			Vector3 collaiderOldPosition = hit.collider.GetComponent<OldPosisions> ().GetOldPosition ();
+			Debug.Log(collaiderOldPosition);
+			collaiderOldPosition.y = transform.position.y;
 			if (currentAxis == "-z") {
-				temp.z -= hit.transform.localScale.z / 2;
-				c.z -= 1;
+				collaiderOldPosition.z -= hit.transform.localScale.z / 2;
+				collaiderOldPosition.x = transform.position.x;
 			}
 			if (currentAxis == "z") {
-				temp.z += hit.transform.localScale.z / 2;
-				c.z += 1;
+				collaiderOldPosition.z += hit.transform.localScale.z / 2;
+				collaiderOldPosition.x = transform.position.x;
 			}
 			if (currentAxis == "x") {
-				temp.x += hit.transform.localScale.z / 2;
-				c.x += 1;
+				collaiderOldPosition.x += hit.transform.localScale.z / 2;
+				collaiderOldPosition.z = transform.position.z;
 			}
 			if (currentAxis == "-x") {
-				temp.x -= hit.transform.localScale.z / 2;
-				c.x -= 1;
+				collaiderOldPosition.x -= hit.transform.localScale.z / 2;
+				collaiderOldPosition.z = transform.position.z;
 			}
-			transform.position = temp;
+			transform.position = collaiderOldPosition;
 		} else {
 			Debug.Log("Plane NOT FINDED!");
 		}
