@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8adb8dceabcca48bad574bcb3eb9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   mover: {fileID: 0}
   targetObject: {fileID: 588596808}
   rotationAmount: 1.5
@@ -235,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8adb8dceabcca48bad574bcb3eb9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   mover: {fileID: 0}
   targetObject: {fileID: 588596808}
   rotationAmount: 1.5
@@ -308,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8adb8dceabcca48bad574bcb3eb9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   mover: {fileID: 0}
   targetObject: {fileID: 588596808}
   rotationAmount: 1.5
@@ -439,6 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8adb8dceabcca48bad574bcb3eb9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   mover: {fileID: 0}
   targetObject: {fileID: 588596808}
   rotationAmount: 1.5
@@ -619,7 +623,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1001 &373202862
 Prefab:
   m_ObjectHideFlags: 0
@@ -729,6 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8adb8dceabcca48bad574bcb3eb9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   mover: {fileID: 0}
   targetObject: {fileID: 588596808}
   rotationAmount: 1.5
@@ -1306,51 +1311,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8adb8dceabcca48bad574bcb3eb9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   mover: {fileID: 0}
   targetObject: {fileID: 588596808}
   rotationAmount: 1.5
   degree: 0
   status: 0
   currentAxis: 0
---- !u!1 &644203106
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 644203108}
-  - 114: {fileID: 644203107}
-  m_Layer: 0
-  m_Name: Pauser
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &644203107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 644203106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53064c304626b46fbad99cda68f94795, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &644203108
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 644203106}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
 --- !u!4 &724355670
 Transform:
   m_PrefabParentObject: {fileID: 494952, guid: 7b113458fd11718408fc70e0482667ba, type: 2}
@@ -1510,6 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8adb8dceabcca48bad574bcb3eb9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   mover: {fileID: 0}
   targetObject: {fileID: 588596808}
   rotationAmount: 1.5
@@ -1722,6 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8adb8dceabcca48bad574bcb3eb9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   mover: {fileID: 0}
   targetObject: {fileID: 588596808}
   rotationAmount: 1.5
@@ -1953,6 +1922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8adb8dceabcca48bad574bcb3eb9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   mover: {fileID: 0}
   targetObject: {fileID: 588596808}
   rotationAmount: 1.5
@@ -2134,6 +2104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8adb8dceabcca48bad574bcb3eb9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   mover: {fileID: 0}
   targetObject: {fileID: 588596808}
   rotationAmount: 1.5
@@ -2369,6 +2340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8adb8dceabcca48bad574bcb3eb9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause: 0
   mover: {fileID: 340686857}
   targetObject: {fileID: 535034169}
   rotationAmount: 5
@@ -2406,7 +2378,7 @@ Transform:
   - {fileID: 999437936}
   - {fileID: 123196004}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1001 &1990840563
 Prefab:
   m_ObjectHideFlags: 0
