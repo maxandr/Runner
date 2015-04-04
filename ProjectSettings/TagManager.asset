@@ -15,6 +15,7 @@ TagManager:
   - HealthBar
   - Box
   - Plane
+  - Platform
   layers:
   - Default
   - TransparentFX

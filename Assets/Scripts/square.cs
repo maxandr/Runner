@@ -4,22 +4,16 @@ using System.Collections;
 public class square : MonoBehaviour 
 {
 	public Material mat;
-	public GameObject Create(Transform transf,int rot)
+	public GameObject Create(Transform transf)
 	{
 		GameObject obstacle = new GameObject();
 		//Create 4 Vertices
 		Vector3[] vert = new Vector3[4];
-		if (rot == 1) {//x y axis
-			vert [0] = new Vector3 (transf.position.x - transf.localScale.x / 2, transf.position.y - transf.localScale.y / 2, 10);//0
-			vert [1] = new Vector3 (transf.position.x + transf.localScale.x / 2, transf.position.y - transf.localScale.y / 2, 10);//1
-			vert [2] = new Vector3 (transf.position.x + transf.localScale.x / 2, transf.position.y + transf.localScale.y / 2, 10);//2
-			vert [3] = new Vector3 (transf.position.x - transf.localScale.x / 2, transf.position.y + transf.localScale.y / 2, 10);//3
-		} else {// z y axis
-			vert [0] = new Vector3 (-10, transf.position.y - transf.localScale.y / 2, transf.position.z - transf.localScale.z / 2);//0
-			vert [1] = new Vector3 (-10, transf.position.y - transf.localScale.y / 2, transf.position.z + transf.localScale.z / 2);//1
-			vert [2] = new Vector3 (-10, transf.position.y + transf.localScale.y / 2, transf.position.z + transf.localScale.z / 2);//2
-			vert [3] = new Vector3 (-10, transf.position.y + transf.localScale.y / 2, transf.position.z - transf.localScale.z / 2);//3
-		}
+		vert [0] = new Vector3 (transf.position.x - transf.localScale.x / 2, transf.position.y - transf.localScale.y / 2, 10);//0
+		vert [1] = new Vector3 (transf.position.x + transf.localScale.x / 2, transf.position.y - transf.localScale.y / 2, 10);//1
+		vert [2] = new Vector3 (transf.position.x + transf.localScale.x / 2, transf.position.y + transf.localScale.y / 2, 10);//2
+		vert [3] = new Vector3 (transf.position.x - transf.localScale.x / 2, transf.position.y + transf.localScale.y / 2, 10);//3
+
 		
 		//Create the triangles using the vertices
 		int[] tris = new int[6];

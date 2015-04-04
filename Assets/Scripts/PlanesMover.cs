@@ -4,8 +4,10 @@ using System.Collections;
 public class PlanesMover : MonoBehaviour {
 
 	public GameObject ObjectsList;
-	private ArrayList oldParams ;     
-	public void Reposition() {
+	private ArrayList oldParams ;   
+	public GameObject Player;
+	public void Reposition(int currentAxis) {
+		Player.GetComponent<PlayerPosition>().Set3DPosision(currentAxis);
 		Transform[] allChildren = ObjectsList.GetComponentsInChildren<Transform>();
 		foreach (Transform child in allChildren) {
 			if (child.gameObject.name == "front" || child.gameObject.name == "back" || child.gameObject.name == "left" || child.gameObject.name == "right") {
@@ -54,5 +56,20 @@ public class PlanesMover : MonoBehaviour {
 				}
 			}
 		}
+		Vector3 t = Camera.main.transform.position;
+		if(currentAxis == -3) {
+					t.z -=1;
+		}
+		if(currentAxis == 3) {
+					t.z +=1;
+		}
+		if(currentAxis == 1) {
+					t.x +=1;
+		}
+		if(currentAxis == -1) {
+					t.x -=1;
+		}
+		Player.GetComponent<PlayerPosition>().SetPosition(t);
+		
 	}
 }

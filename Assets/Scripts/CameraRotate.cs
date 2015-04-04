@@ -24,11 +24,11 @@ public class CameraRotate : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.K) ||Input.GetKeyDown(KeyCode.JoystickButton4)) {
 			targetAngle -= 90.0f;
 			degree -= 90f;
-			mover.GetComponent<PlanesMover>().Reposition();
+			mover.GetComponent<PlanesMover>().Reposition(currentAxis);
 		} else if (Input.GetKeyDown(KeyCode.L)||Input.GetKeyDown(KeyCode.JoystickButton5)) {
 			targetAngle += 90.0f;
 			degree += 90f;
-			mover.GetComponent<PlanesMover>().Reposition();
+			mover.GetComponent<PlanesMover>().Reposition(currentAxis);
 		}
 
 		currentAxis = 0;
@@ -41,7 +41,6 @@ public class CameraRotate : MonoBehaviour {
 		} else {
 			status = false;
 		}
-		Debug.Log (status);
 	}
 	
 	protected void Rotate()
@@ -75,6 +74,5 @@ public class CameraRotate : MonoBehaviour {
 		if (transform.eulerAngles.y < 93 && transform.eulerAngles.y > 87) {
 			currentAxis=1;
 		}
-		Debug.Log (currentAxis);
 	}
 }
