@@ -168,7 +168,7 @@ MonoBehaviour:
   rotationAmount: 1.5
   degree: 0
   status: 0
-  currentAxis: 0
+  currentAxis: 
 --- !u!1 &156008354
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   rotationAmount: 1.5
   degree: 0
   status: 0
-  currentAxis: 0
+  currentAxis: 
 --- !u!1 &242951015
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   rotationAmount: 1.5
   degree: 0
   status: 0
-  currentAxis: 0
+  currentAxis: 
 --- !u!1 &299656489
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
   rotationAmount: 1.5
   degree: 0
   status: 0
-  currentAxis: 0
+  currentAxis: 
 --- !u!1 &335855067
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,7 +739,7 @@ MonoBehaviour:
   rotationAmount: 1.5
   degree: 0
   status: 0
-  currentAxis: 0
+  currentAxis: 
 --- !u!1001 &504946598
 Prefab:
   m_ObjectHideFlags: 0
@@ -1317,7 +1317,7 @@ MonoBehaviour:
   rotationAmount: 1.5
   degree: 0
   status: 0
-  currentAxis: 0
+  currentAxis: 
 --- !u!4 &724355670
 Transform:
   m_PrefabParentObject: {fileID: 494952, guid: 7b113458fd11718408fc70e0482667ba, type: 2}
@@ -1483,7 +1483,7 @@ MonoBehaviour:
   rotationAmount: 1.5
   degree: 0
   status: 0
-  currentAxis: 0
+  currentAxis: 
 --- !u!1001 &980559993
 Prefab:
   m_ObjectHideFlags: 0
@@ -1696,7 +1696,7 @@ MonoBehaviour:
   rotationAmount: 1.5
   degree: 0
   status: 0
-  currentAxis: 0
+  currentAxis: 
 --- !u!4 &999437936
 Transform:
   m_PrefabParentObject: {fileID: 494952, guid: 7b113458fd11718408fc70e0482667ba, type: 2}
@@ -1780,7 +1780,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 64b12b15baf9644af9f0651e6705f0ef, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 12.29
+      value: 8.26000023
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 64b12b15baf9644af9f0651e6705f0ef, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1804,6 +1804,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 64b12b15baf9644af9f0651e6705f0ef, type: 2}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 64b12b15baf9644af9f0651e6705f0ef, type: 2}
+      propertyPath: orthographic size
+      value: 13.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 64b12b15baf9644af9f0651e6705f0ef, type: 2}
+      propertyPath: far clip plane
+      value: 1000.65002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 64b12b15baf9644af9f0651e6705f0ef, type: 2}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 64b12b15baf9644af9f0651e6705f0ef, type: 2}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 64b12b15baf9644af9f0651e6705f0ef, type: 2}
+      propertyPath: m_HDR
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1928,7 +1948,7 @@ MonoBehaviour:
   rotationAmount: 1.5
   degree: 0
   status: 0
-  currentAxis: 0
+  currentAxis: 
 --- !u!4 &1556087194
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: bdd88e3de6e024ec1bacd58073808d06, type: 2}
@@ -2110,7 +2130,7 @@ MonoBehaviour:
   rotationAmount: 1.5
   degree: 0
   status: 0
-  currentAxis: 0
+  currentAxis: 
 --- !u!1001 &1736491328
 Prefab:
   m_ObjectHideFlags: 0
@@ -2350,7 +2370,7 @@ MonoBehaviour:
   rotationAmount: 5
   degree: 0
   status: 0
-  currentAxis: 0
+  currentAxis: 
 --- !u!1 &1974365332
 GameObject:
   m_ObjectHideFlags: 0

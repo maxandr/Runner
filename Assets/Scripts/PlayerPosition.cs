@@ -7,7 +7,7 @@ public class PlayerPosition : MonoBehaviour {
 	public void SetPosition(Vector3 tPos) {
 		transform.position = tPos;
 	}
-	public void Set3DPosision(int currentAxis) {
+	public void Set3DPosision(string currentAxis) {
 
 		RaycastHit hit;
 		SphereCollider t = GetComponent<SphereCollider> ();
@@ -17,19 +17,19 @@ public class PlayerPosition : MonoBehaviour {
 			Vector3 temp =  hit.collider.GetComponent<OldPosisions> ().GetOldPosition ();
 			temp.y = transform.position.y;
 			Vector3 c = Camera.main.transform.position;
-			if(currentAxis == -3) {
+			if(currentAxis == "-z") {
 				temp.z -= hit.transform.localScale.z/2;
 				c.z -=1;
 			}
-			if(currentAxis == 3) {
+			if(currentAxis == "z") {
 				temp.z += hit.transform.localScale.z/2;
 				c.z +=1;
 			}
-			if(currentAxis == 1) {
+			if(currentAxis == "x") {
 				temp.x += hit.transform.localScale.z/2;
 				c.x +=1;
 			}
-			if(currentAxis == -1) {
+			if(currentAxis == "-x") {
 				temp.x -= hit.transform.localScale.z/2;
 				c.x -=1;
 			}

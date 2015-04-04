@@ -11,7 +11,7 @@ public class CameraRotate : Pauser {
 	[HideInInspector]
 	public bool status;
 	[HideInInspector]
-	public int  currentAxis;//1 = x 2 = y 3 = z
+	public string  currentAxis;//1 = x 2 = y 3 = z
 	private float cameraDistance;
 	// Update is called once per frame
 	void Start() {
@@ -36,7 +36,7 @@ public class CameraRotate : Pauser {
 			mover.GetComponent<PlanesMover>().Reposition(currentAxis);
 		}
 
-		currentAxis = 0;
+		currentAxis = "";
 		if(targetAngle !=0) {
 			Rotate();
 		}
@@ -46,6 +46,7 @@ public class CameraRotate : Pauser {
 		} else {
 			status = false;
 		}
+		Debug.Log (currentAxis);
 	}
 	
 	protected void Rotate()
@@ -64,22 +65,22 @@ public class CameraRotate : Pauser {
 		if (targetAngle == 0) {
 			CheckCoords();
 			mover.GetComponent<PlanesMover>().Move(currentAxis);
-			if(currentAxis == -3) {
+			if(currentAxis == "-z") {
 				Vector3 temp =  transform.position;
-				temp.z =cameraDistance;
+				temp.z = cameraDistance;
 				transform.position = temp;
 			}
-			if(currentAxis == 3) {
+			if(currentAxis == "z") {
 				Vector3 temp =  transform.position;
 				temp.z = -cameraDistance;
 				transform.position = temp;
 			}
-			if(currentAxis == 1) {
+			if(currentAxis == "x") {
 				Vector3 temp =  transform.position;
 				temp.x = -cameraDistance;
 				transform.position = temp;
 			}
-			if(currentAxis == -1) {
+			if(currentAxis == "-x") {
 				Vector3 temp =  transform.position;
 				temp.x = cameraDistance;
 				transform.position = temp;
@@ -89,16 +90,16 @@ public class CameraRotate : Pauser {
 	}
 	protected void CheckCoords() {
 		if (transform.eulerAngles.y < 3 || transform.eulerAngles.y > 367) {
-			currentAxis=3;
+			currentAxis="z";
 		}
 		if (transform.eulerAngles.y < 183 && transform.eulerAngles.y > 177) {
-			currentAxis=-3;
+			currentAxis="-z";
 		}
 		if (transform.eulerAngles.y < 273 && transform.eulerAngles.y > 267) {
-			currentAxis=-1;
+			currentAxis="-x";
 		}
 		if (transform.eulerAngles.y < 93 && transform.eulerAngles.y > 87) {
-			currentAxis=1;
+			currentAxis="x";
 		}
 	}
 }
