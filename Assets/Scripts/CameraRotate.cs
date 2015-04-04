@@ -12,8 +12,10 @@ public class CameraRotate : Pauser {
 	public bool status;
 	[HideInInspector]
 	public int  currentAxis;//1 = x 2 = y 3 = z
+	private float cameraDistance;
 	// Update is called once per frame
 	void Start() {
+		cameraDistance = transform.position.z;
 		StartCoroutine(Start1());
 		status = false;
 		CheckCoords ();
@@ -23,10 +25,12 @@ public class CameraRotate : Pauser {
 	{
 		// Trigger functions if Rotate is requested
 		if (Input.GetKeyDown(KeyCode.K) ||Input.GetKeyDown(KeyCode.JoystickButton4)) {
+			Pausegame(true);
 			targetAngle -= 90.0f;
 			degree -= 90f;
 			mover.GetComponent<PlanesMover>().Reposition(currentAxis);
 		} else if (Input.GetKeyDown(KeyCode.L)||Input.GetKeyDown(KeyCode.JoystickButton5)) {
+			Pausegame(true);
 			targetAngle += 90.0f;
 			degree += 90f;
 			mover.GetComponent<PlanesMover>().Reposition(currentAxis);
@@ -60,6 +64,27 @@ public class CameraRotate : Pauser {
 		if (targetAngle == 0) {
 			CheckCoords();
 			mover.GetComponent<PlanesMover>().Move(currentAxis);
+			if(currentAxis == -3) {
+				Vector3 temp =  transform.position;
+				temp.z =cameraDistance;
+				transform.position = temp;
+			}
+			if(currentAxis == 3) {
+				Vector3 temp =  transform.position;
+				temp.z = -cameraDistance;
+				transform.position = temp;
+			}
+			if(currentAxis == 1) {
+				Vector3 temp =  transform.position;
+				temp.x = -cameraDistance;
+				transform.position = temp;
+			}
+			if(currentAxis == -1) {
+				Vector3 temp =  transform.position;
+				temp.x = cameraDistance;
+				transform.position = temp;
+			}
+			Pausegame(false);
 		}
 	}
 	protected void CheckCoords() {

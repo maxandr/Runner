@@ -9,8 +9,7 @@ public abstract class Pauser : MonoBehaviour // Any resemblance to lady stuff is
 	{
 		while( Application.isPlaying )
 		{
-			if( pause )
-				DoUpdate();
+			DoUpdate();
 
 			yield return null;
 
@@ -30,5 +29,8 @@ public abstract class Pauser : MonoBehaviour // Any resemblance to lady stuff is
 		}
 	}
 		// That's where it happens !
+	protected void Pausegame( bool tpause) {
+		pause = tpause;
+	}
 	protected abstract void DoUpdate();
 }

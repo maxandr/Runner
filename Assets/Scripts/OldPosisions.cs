@@ -10,4 +10,7 @@ public class OldPosisions : MonoBehaviour {
 	public void Reposition() {
 		transform.position = position;
 	}
+	public Vector3 GetOldPosition() {
+		return position;
+	}
 }
