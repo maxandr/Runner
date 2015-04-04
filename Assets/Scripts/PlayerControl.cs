@@ -43,7 +43,7 @@ public class PlayerControl : MonoBehaviour
 				jump = true;
 			}
 		}
-		if (Input.GetKeyDown (KeyCode.JoystickButton7)) {
+		if (Input.GetKeyDown (KeyCode.JoystickButton6)) {
 			Application.LoadLevel (Application.loadedLevel);
 		}
 	}

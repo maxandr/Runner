@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraRotate : MonoBehaviour {
+public class CameraRotate : Pauser {
 	public PlanesMover mover;
 	public GameObject targetObject;
 	private float targetAngle = 0;
@@ -14,11 +14,12 @@ public class CameraRotate : MonoBehaviour {
 	public int  currentAxis;//1 = x 2 = y 3 = z
 	// Update is called once per frame
 	void Start() {
+		StartCoroutine(Start1());
 		status = false;
 		CheckCoords ();
 		mover.GetComponent<PlanesMover>().Move(currentAxis);
 	}
-	void FixedUpdate()
+	protected override void DoUpdate()
 	{
 		// Trigger functions if Rotate is requested
 		if (Input.GetKeyDown(KeyCode.K) ||Input.GetKeyDown(KeyCode.JoystickButton4)) {

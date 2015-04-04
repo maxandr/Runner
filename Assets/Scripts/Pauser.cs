@@ -1,19 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pauser : MonoBehaviour {
-	private bool paused = false;
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyUp(KeyCode.P))
-		{
-			paused = !paused;
-		}
+public abstract class Pauser : MonoBehaviour // Any resemblance to lady stuff is purely coincidental ...
+{
+	public bool pause = false;
 
-		if(paused)
-			Time.timeScale = 0;
-		else
-			Time.timeScale = 1;
+	protected IEnumerator Start1()
+	{
+		while( Application.isPlaying )
+		{
+			if( pause )
+				DoUpdate();
+
+			yield return null;
+
+			// You could even have a time variable here
+		}
 	}
+	void Update() {
+		if (Input.GetKeyDown (KeyCode.JoystickButton7)) {
+			if(Time.timeScale==0) {
+				Time.timeScale=1.0f;
+				pause=false;
+			}
+			else if(Time.timeScale==1.0f) {
+				Time.timeScale=0;
+				pause=true;
+			}
+		}
+	}
+		// That's where it happens !
+	protected abstract void DoUpdate();
 }
