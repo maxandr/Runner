@@ -46,7 +46,6 @@ public class CameraRotate : Pauser {
 		} else {
 			status = false;
 		}
-		Debug.Log (currentAxis);
 	}
 	
 	protected void Rotate()

@@ -14,26 +14,28 @@ public class PlayerPosition : MonoBehaviour {
 		Vector3 a = t.transform.position;
 		a.y -= t.radius;
 		if (Physics.Raycast (a, -Vector3.up, out hit)) {
-			Vector3 temp =  hit.collider.GetComponent<OldPosisions> ().GetOldPosition ();
+			Vector3 temp = hit.collider.GetComponent<OldPosisions> ().GetOldPosition ();
 			temp.y = transform.position.y;
 			Vector3 c = Camera.main.transform.position;
-			if(currentAxis == "-z") {
-				temp.z -= hit.transform.localScale.z/2;
-				c.z -=1;
+			if (currentAxis == "-z") {
+				temp.z -= hit.transform.localScale.z / 2;
+				c.z -= 1;
 			}
-			if(currentAxis == "z") {
-				temp.z += hit.transform.localScale.z/2;
-				c.z +=1;
+			if (currentAxis == "z") {
+				temp.z += hit.transform.localScale.z / 2;
+				c.z += 1;
 			}
-			if(currentAxis == "x") {
-				temp.x += hit.transform.localScale.z/2;
-				c.x +=1;
+			if (currentAxis == "x") {
+				temp.x += hit.transform.localScale.z / 2;
+				c.x += 1;
 			}
-			if(currentAxis == "-x") {
-				temp.x -= hit.transform.localScale.z/2;
-				c.x -=1;
+			if (currentAxis == "-x") {
+				temp.x -= hit.transform.localScale.z / 2;
+				c.x -= 1;
 			}
-			transform.position=temp;
+			transform.position = temp;
+		} else {
+			Debug.Log("Plane NOT FINDED!");
 		}
 	}
 }
