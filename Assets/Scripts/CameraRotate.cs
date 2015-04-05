@@ -47,7 +47,27 @@ public class CameraRotate : Pauser {
 			status = false;
 		}
 	}
-	
+	public void swipe(string axis) {
+		if (axis == "up") {
+
+		}
+		if (axis == "down") {
+		
+		}
+		if (axis == "left") {
+			Pausegame(true);
+			targetAngle -= 90.0f;
+			degree -= 90f;
+			mover.GetComponent<PlanesMover>().Reposition(currentAxis);
+		}
+		if (axis == "right") {
+			Pausegame(true);
+			targetAngle += 90.0f;
+			degree += 90f;
+			mover.GetComponent<PlanesMover>().Reposition(currentAxis);
+		}
+
+	}
 	protected void Rotate()
 	{
 		targetObject.transform.LookAt (transform);

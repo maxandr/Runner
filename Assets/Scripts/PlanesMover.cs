@@ -38,7 +38,11 @@ public class PlanesMover : MonoBehaviour {
 						temp++;
 					}
 					if(!finded) {
-					Vector3 a = Camera.main.transform.position;
+						RaycastHit hit;
+						if (Physics.Raycast(child.position, Vector3.forward, out hit,1000, 1 << LayerMask.NameToLayer("Building"))) {
+							continue;
+						}
+						Vector3 a = Camera.main.transform.position;
 						a.z -=1;
 						a.x = child.position.x;
 						a.y = child.position.y;
@@ -66,6 +70,10 @@ public class PlanesMover : MonoBehaviour {
 						temp++;
 					}
 					if(!finded) {
+						RaycastHit hit;
+						if (Physics.Raycast (child.position, -Vector3.forward, out hit,1000.0f,1 << LayerMask.NameToLayer("Building"))) {
+							continue;
+						}
 						Vector3 a = Camera.main.transform.position;
 						a.z +=1;
 						a.x = child.position.x;
@@ -94,6 +102,10 @@ public class PlanesMover : MonoBehaviour {
 						temp++;
 					}
 					if(!finded) {
+						RaycastHit hit;
+						if (Physics.Raycast (child.position, -Vector3.right, out hit,1000,1 << LayerMask.NameToLayer("Building"))) {
+							continue;
+						}
 						Vector3 a = Camera.main.transform.position;
 						a.x +=1;
 						a.z = child.position.z;
@@ -105,6 +117,9 @@ public class PlanesMover : MonoBehaviour {
 			}
 			if(currentAxis == "-x") {
 				if(child.gameObject.name=="left") {
+					if(child.gameObject.transform.parent.name=="BoxPlane 17") {
+						int a =0;
+					}
 					int temp=0;
 					bool finded = false;
 					foreach (Transform i in movedObjects) {
@@ -122,6 +137,10 @@ public class PlanesMover : MonoBehaviour {
 						temp++;
 					}
 					if(!finded) {
+						RaycastHit hit;
+						if (Physics.Raycast (child.position, Vector3.right, out hit,1000,1 << LayerMask.NameToLayer("Building"))) {
+							continue;
+						}
 						Vector3 a = Camera.main.transform.position;
 						a.x -=1;
 						a.z = child.position.z;
