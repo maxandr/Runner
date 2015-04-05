@@ -56,7 +56,6 @@ public class PlanesMover : MonoBehaviour {
 							if(i.GetComponent<OldPosisions>().GetOldPosition().z > child.GetComponent<OldPosisions>().GetOldPosition().z) {
 								i.GetComponent<OldPosisions>().RepositionToOldPosition();
 								movedObjects.RemoveAt(temp);
-								finded = true;
 								break;
 							}
 							else {
@@ -85,7 +84,6 @@ public class PlanesMover : MonoBehaviour {
 							if(i.GetComponent<OldPosisions>().GetOldPosition().x > child.GetComponent<OldPosisions>().GetOldPosition().x) {
 								i.GetComponent<OldPosisions>().RepositionToOldPosition();
 								movedObjects.RemoveAt(temp);
-								finded = true;
 								break;
 							}
 							else {
@@ -114,7 +112,6 @@ public class PlanesMover : MonoBehaviour {
 							if(i.GetComponent<OldPosisions>().GetOldPosition().x < child.GetComponent<OldPosisions>().GetOldPosition().x) {
 								i.GetComponent<OldPosisions>().RepositionToOldPosition();
 								movedObjects.RemoveAt(temp);
-								finded = true;
 								break;
 							}
 							else {
