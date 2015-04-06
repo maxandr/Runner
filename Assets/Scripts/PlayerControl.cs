@@ -44,10 +44,12 @@ public class PlayerControl : MonoBehaviour
 			}
 		}
 		if (Input.GetKeyDown (KeyCode.JoystickButton6)) {
-			Application.LoadLevel (Application.loadedLevel);
+			Restart();
 		}
 	}
-
+	public void Restart () {
+		Application.LoadLevel (Application.loadedLevel);
+	}
 
 	void FixedUpdate ()
 	{
