@@ -27,6 +27,12 @@ public abstract class Pauser : MonoBehaviour // Any resemblance to lady stuff is
 				pause=true;
 			}
 		}
+		if(pause) {
+			Time.timeScale=0.0f;
+		}
+		else {
+			Time.timeScale=1.0f;
+		}
 	}
 		// That's where it happens !
 	protected void Pausegame( bool tpause) {

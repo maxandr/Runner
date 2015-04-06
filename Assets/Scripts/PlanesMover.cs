@@ -43,7 +43,7 @@ public class PlanesMover : MonoBehaviour {
 							continue;
 						}
 						Vector3 a = Camera.main.transform.position;
-						a.z -=1;
+						a.z -=1.5f;
 						a.x = child.position.x;
 						a.y = child.position.y;
 						child.position= a;
@@ -75,7 +75,7 @@ public class PlanesMover : MonoBehaviour {
 							continue;
 						}
 						Vector3 a = Camera.main.transform.position;
-						a.z +=1;
+						a.z +=1.5f;
 						a.x = child.position.x;
 						a.y = child.position.y;
 						child.position= a;
@@ -107,7 +107,7 @@ public class PlanesMover : MonoBehaviour {
 							continue;
 						}
 						Vector3 a = Camera.main.transform.position;
-						a.x +=1;
+						a.x +=1.5f;
 						a.z = child.position.z;
 						a.y = child.position.y;
 						child.position= a;
@@ -117,9 +117,6 @@ public class PlanesMover : MonoBehaviour {
 			}
 			if(currentAxis == "-x") {
 				if(child.gameObject.name=="left") {
-					if(child.gameObject.transform.parent.name=="BoxPlane 17") {
-						int a =0;
-					}
 					int temp=0;
 					bool finded = false;
 					foreach (Transform i in movedObjects) {
@@ -142,7 +139,7 @@ public class PlanesMover : MonoBehaviour {
 							continue;
 						}
 						Vector3 a = Camera.main.transform.position;
-						a.x -=1;
+						a.x -=1.5f;
 						a.z = child.position.z;
 						a.y = child.position.y;
 						child.position= a;
