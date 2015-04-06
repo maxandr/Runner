@@ -6,6 +6,7 @@ public class swipeDevice : MonoBehaviour {
 	//inside class
 	
 	public Camera mCamera;
+	public GameObject Player;
 	
 	//inside class
 	private Vector2 firstPressPos;
@@ -17,9 +18,16 @@ public class swipeDevice : MonoBehaviour {
 	
 	void Update()
 	{
-		if(Input.touches.Length > 0)
+		Player.GetComponent<PlayerControl>().SetMovingDirection(0);
+		if(Input.touches.Length == 1)
 		{
 			Touch t = Input.GetTouch(0);
+			if(t.position.x<Screen.width/2) {
+					Player.GetComponent<PlayerControl>().SetMovingDirection(-1);
+			}
+			else {
+					Player.GetComponent<PlayerControl>().SetMovingDirection(1);
+			}
 			if(t.phase == TouchPhase.Began)
 			{
 				//save began touch 2d point
@@ -34,28 +42,37 @@ public class swipeDevice : MonoBehaviour {
 				currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
 				
 				//normalize the 2d vector
-				currentSwipe.Normalize();
-				
+				//currentSwipe.Normalize();
+				bool swiped=false;
 				//swipe upwards
-				if(currentSwipe.y > 0 && currentSwipe.x > -0.5f  &&currentSwipe.x < 0.5f)
+				if(currentSwipe.y > Screen.width/10 )
 				{
+					mCamera.GetComponent<CameraRotate>().swipe("up");
 					Debug.Log("up swipe");
-				}
-				//swipe down
-				if(currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
-				{
-					Debug.Log("down swipe");
+					swiped=true;
+					return;
 				}
 				//swipe left
-				if(currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+				if(Mathf.Abs( currentSwipe.x) > Screen.width/7 && currentSwipe.x<0 )
 				{
+					mCamera.GetComponent<CameraRotate>().swipe("left");
 					Debug.Log("left swipe");
+					return;
+					swiped=true;
 				}
 				//swipe right
-				if(currentSwipe.x > 0 && currentSwipe.y > -0.5f  &&currentSwipe.y < 0.5f)
+				if(Mathf.Abs( currentSwipe.x) > Screen.width/7 && currentSwipe.x>0 )
 				{
+					mCamera.GetComponent<CameraRotate>().swipe("right");
 					Debug.Log("right swipe");
+					return;
+					swiped=true;
 				}
+				if(!swiped) {
+					Vector2 pos = new Vector2(t.position.x,t.position.y) ;
+				//		Player.GetComponent<PlayerControl>().Flip();
+				}
+
 			}
 		}
 	}

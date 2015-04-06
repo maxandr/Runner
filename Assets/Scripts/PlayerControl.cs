@@ -23,20 +23,32 @@ public class PlayerControl : MonoBehaviour
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private bool grounded = false;			// Whether or not the player is grounded.
 	private Animator anim;					// Reference to the player's animator component.
-
+	private int movingDirection;
 	void Awake()
 	{
 		// Setting up references.
 		groundCheck = transform.Find("groundCheck");
 		anim = GetComponent<Animator>();
+		movingDirection = 0;
 	}
 
 
-	void Update()
-	{
-		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
+	public void Restart () {
+		Application.LoadLevel (Application.loadedLevel);
+	}
+	public void Jump () {
 		grounded = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
-
+		// If the jump button is pressed and the player is grounded then the player should jump.
+			if (grounded) {
+				jump = true;
+			}
+	}
+	public void SetMovingDirection(int x) {
+		movingDirection = x;
+	}
+	void Update ()
+	{
+		grounded = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Joystick1Button0)) {
 			if (grounded) {
@@ -46,15 +58,20 @@ public class PlayerControl : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.JoystickButton6)) {
 			Restart();
 		}
-	}
-	public void Restart () {
-		Application.LoadLevel (Application.loadedLevel);
-	}
-
-	void FixedUpdate ()
-	{
+	/*	if (facingRight) {
+			transform.position -= transform.right * Speed * Time.deltaTime;
+			Camera.main.transform.position -= transform.right * Speed * Time.deltaTime;
+		}
+		else {
+			transform.position += transform.right * Speed * Time.deltaTime;
+			Camera.main.transform.position += transform.right * Speed * Time.deltaTime;
+		}*/
 		// Cache the horizontal input.
-		float h = Input.GetAxis ("Horizontal");
+		float h;
+		 h = movingDirection;
+#if UNITY_EDITOR_WIN
+		h = Input.GetAxis ("Horizontal");
+#endif
 		Vector3 t = Camera.main.transform.position;
 		t.y = transform.position.y;
 		Camera.main.transform.position = t;
@@ -94,7 +111,7 @@ public class PlayerControl : MonoBehaviour
 	}
 
 	
-	void Flip ()
+	public void Flip ()
 	{
 		// Switch the way the player is labelled as facing.
 		facingRight = !facingRight;

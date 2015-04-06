@@ -6,7 +6,6 @@ public class swipe : MonoBehaviour {
 	//inside class
 
 	public Camera mCamera;
-	
 	//inside class
 	private Vector2 firstPressPos;
 	private Vector2 secondPressPos;
@@ -21,6 +20,7 @@ public class swipe : MonoBehaviour {
 		{
 			//save began touch 2d point
 			firstPressPos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
+			Debug.Log("1");
 		}
 		if(Input.GetMouseButtonUp(0))
 		{

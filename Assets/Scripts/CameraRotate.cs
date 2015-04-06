@@ -49,7 +49,7 @@ public class CameraRotate : Pauser {
 	}
 	public void swipe(string axis) {
 		if (axis == "up") {
-
+			targetObject.GetComponent<PlayerControl>().Jump();
 		}
 		if (axis == "down") {
 		
